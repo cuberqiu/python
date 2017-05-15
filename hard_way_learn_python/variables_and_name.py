@@ -1,4 +1,6 @@
 # Variables and names in python
+#coding:utf-8
+#如果后续的print中使用了中文，则需要 上面的定义
 
 my_name = "bobo"
 my_age = 23
@@ -22,3 +24,5 @@ print "my name is %s, my age is %d, my height is %r" %(my_name,my_age,my_height)
 
 print """ heartcraft
 what should i do ?"""
+
+print "我是粗哟"
