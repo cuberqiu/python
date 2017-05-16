@@ -25,4 +25,5 @@ print "my name is %s, my age is %d, my height is %r" %(my_name,my_age,my_height)
 print """ heartcraft
 what should i do ?"""
 
-print "我是粗哟"
+
+print "我粗哟"
