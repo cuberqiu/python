@@ -1,0 +1,16 @@
+I am cuber.
+I am cuber.
+I am cuber.
+I am cuber.
+
+('My age is ', 24, '\n')
+I am cuber.
+('My age is ', 24, '\n')
+I am cuber.
+('My age is ', 24, '\n')
+I am cuber.
+('My age is ', 24, '\n')
+I am cuber.
+('My age is ', 24, '\n')
+I am cuber.
+('My age is ', 24, '\n')
