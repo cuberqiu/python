@@ -22,8 +22,11 @@ print "my name is%s" %my_name
 # %r is a very useful one. It's like saying "print this no matter what."
 print "my name is %s, my age is %d, my height is %r" %(my_name,my_age,my_height)
 
+# 在三引号之间，可以放任意多行的文字。
 print """ heartcraft
-what should i do ?"""
+what should i do ?
+Do u want to play with me?
+"""
 
 
-print "我粗哟"
+print "我粗\n哟"

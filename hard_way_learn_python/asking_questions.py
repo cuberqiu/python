@@ -1,5 +1,8 @@
 #asking questions
 
+y = raw_input("Name?\n")
+print y ,"\n"
+
 print "How old are you ?",
 
 age = raw_input()

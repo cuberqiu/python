@@ -1,4 +1,7 @@
-#This file talks about the numbers and math in python
+from plotly import offline
+offline.init_notebook_mode()
+
+offline.iplot([{"y": [1, 2, 1]}])
 
 print "Numbers and Math"
 
