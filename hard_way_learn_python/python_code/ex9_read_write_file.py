@@ -7,7 +7,7 @@
 #script,file_name = argv
 
 script = "ex9_read_write_file.py"
-file_name = "/home/cuber/Documents/python/hard_way_learn_python/file/write.txt"
+file_name = "/home/wsn/Documents/python/hard_way_learn_python/file/write.txt"
 
 # open file use open command, it returns a file object
 txt = open(file_name,'r+w')
