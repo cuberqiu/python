@@ -1,3 +1,4 @@
+
 # variables in function
 def assign(x):
     print "origin x is :%r" %x
