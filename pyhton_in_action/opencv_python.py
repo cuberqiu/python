@@ -1,13 +1,13 @@
 import cv2
 
 capture0 = cv2.VideoCapture(0)
-capture1 = cv2.VideoCapture(1)
+capture1 = cv2.VideoCapture(2)
 
 
 #img = cv2.imread('/home/wsn/Pictures/screenshot.png')
 
-#cv2.namedWindow('Video',cv2.WND_PROP_FULLSCREEN)
-cv2.namedWindow('Video')
+cv2.namedWindow('Video',cv2.WND_PROP_FULLSCREEN)
+#cv2.namedWindow('Video')
 cv2.setWindowProperty('Video',cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
 
 #cv2.imshow('Video',img)
