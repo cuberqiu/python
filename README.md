@@ -1,2 +1,2 @@
 # python
-python study summary
+python study summary.
