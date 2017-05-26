@@ -1,2 +1,2 @@
 # python
-python学习总结
+python study summary
