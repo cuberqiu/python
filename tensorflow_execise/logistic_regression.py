@@ -3,7 +3,7 @@ import tensorflow as tf
 import numpy as np
 
 # Import MINST dataflow
-from tensorflow_execise.mnist_data import input_data
+from tensorflow_execise.mnist_data.input_data import *
 #from mnist_data import input_data
 
 
