@@ -18,7 +18,7 @@ mnist = input_data.read_data_sets("tensorflow_execise/MNIST_data/",one_hot=True)
 # x isn't a specific value. It's a placeholder, a value that we'll input when
 # we ask tensorflow to run a computation. We want to be able to input any
 # number of MNIST images, each flattened into a 784-dimensional vector. We
-# represent this a 2-D tensor of floating-point numbers, with a shape [None,784]
+# represent this a 2-D tensor of floating-point numbers, with a shape [None,784]print 6299/12
 # None means that a dimension can be of any length.
 x = tf.placeholder(tf.float32,shape=[None,784])
 W = tf.Variable(tf.zeros([784,10]))
