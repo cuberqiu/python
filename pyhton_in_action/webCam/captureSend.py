@@ -12,8 +12,7 @@ cap1.set(cv2.CAP_PROP_FRAME_WIDTH,1280)
 
 
 s = socket(AF_INET,SOCK_DGRAM)
-host = '192.168.0.109'
-# host = '127.0.0.1'
+host = '127.0.0.1'
 port = 9996
 addr = (host,port)
 
@@ -25,7 +24,6 @@ show_0 = True
 key = '0'
 
 while True:
-
     if show_0:
         cv2.imshow('show',frame0)
         key = cv2.waitKey(1)
@@ -50,15 +48,17 @@ while True:
 
 
     count = 0
+    max_size = 60000
     while count < len(stringdata):
-        if count + 60000 > len(stringdata):
+        if count + max_size > len(stringdata):
             s.sendto(stringdata[count:],addr)
         else:
-            s.sendto(stringdata[count:count+60000],addr)
-        count += 60000
+            s.sendto(stringdata[count:count+max_size],addr)
+        count += max_size
     print "send one frame"
 
     ret,frame0 = cap0.read()
     ret,frame1 = cap1.read()
 
 cap.release()
+s.close()
