@@ -17,6 +17,11 @@ addr = ('127.0.0.1',9996)
 s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind(addr)
 
+# ouput
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/webCam/output.avi'\
+,fourcc,30,(1280,720))
+
 # cv2.namedWindow('cam')
 
 max_size = 60000
@@ -57,8 +62,6 @@ while True:
         img_decoded = cv2.imdecode(data_show,1)
         # print img_decoded
 
-        if img_decoded == None:
-            print "img is empty"
-        else:
-            cv2.imshow('cam',img_decoded)
-            cv2.waitKey(1)
+        cv2.imshow('cam',img_decoded)
+        cv2.waitKey(1)
+        out.write(img_decoded)

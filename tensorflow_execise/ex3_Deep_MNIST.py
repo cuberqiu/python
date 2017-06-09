@@ -88,3 +88,23 @@ def bias_variable(shape):
     return tf.Variable(initial)
 
 # Convolution and Pooling
+# TensorFlow also gives a lot of flexibility in convolution and pooling operations.
+# How do we handle the boundaries? What is our stride size? In this example, We're
+# always going to choose the vanilla(香草) version. Our convolutions uses a stride
+# of one and are zero padded so that the output is the same size as the input.
+# Our pooling is plain old max pooling over 2x2 blocks. To keep our code cleaner,
+# let's also abstract those operations into functions.
+def conv2d(x,W):
+    return tf.nn.conv2d(x,W,strides=[1,1,1,1],padding='SAME')
+
+def max_pool_2x2(x):
+    return tf.nn.max_pool(x,ksize=[1,2,2,1],strides=[1,2,2,1],padding='SAME')
+
+# First Convolutional Layer
+# We can now implement our first layer. It will consist of convolution, followed
+# by max pooling. The convolution will compute 32 features for each 5x5 patch.
+# Its weight tensor will have a shape of [5,5,1,32].The first two dimensions are
+# the patch size, the next is the number of input channels, and the last is the
+# number of output channels. We will also have a bias vector with a component for
+# each output channel
+W_conv1 = weight_variable([5,5,1,32])

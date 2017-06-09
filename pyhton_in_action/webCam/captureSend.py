@@ -13,11 +13,12 @@
 import numpy as np
 import cv2
 from socket import *
+import datetime
 
 # camera0
-cap0 = cv2.VideoCapture(0)
+cap0 = cv2.VideoCapture(1)
 # camera1
-cap1 = cv2.VideoCapture(1)
+cap1 = cv2.VideoCapture(3)
 
 # setting camera0's picture size
 cap0.set(cv2.CAP_PROP_FRAME_HEIGHT,720)
@@ -29,11 +30,18 @@ cap1.set(cv2.CAP_PROP_FRAME_WIDTH,1280)
 # UDP initialization
 s = socket(AF_INET,SOCK_DGRAM)
 # destination ip
-host = '127.0.0.1'
+host = '192.168.0.112'
 # destination port
 port = 9996
 # address must be setted as a tuple
 addr = (host,port)
+
+# save
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out0 = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/webCam/output0.avi'\
+,fourcc,30,(1280,720))
+out1 = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/webCam/output1.avi'\
+,fourcc,30,(1280,720))
 
 # cv2.namedWindow('show',cv2.WND_PROP_FULLSCREEN)
 # read camera data
@@ -88,6 +96,15 @@ while True:
 
     ret,frame0 = cap0.read()
     ret,frame1 = cap1.read()
+
+    dt = datetime.datetime.now()
+    cv2.putText(frame0,str(dt),(10,frame0.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+    ,1.35,(0,0,255),1)
+    cv2.putText(frame1,str(dt),(10,frame1.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+    ,1.35,(0,0,255),1)
+
+    out0.write(frame0)
+    out1.write(frame1)
 
 cap.release()
 s.close()
