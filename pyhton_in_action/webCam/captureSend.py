@@ -43,6 +43,9 @@ out0 = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/webCam/outpu
 out1 = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/webCam/output1.avi'\
 ,fourcc,30,(1280,720))
 
+ts_file0 = open('/home/wsn/Documents/python/pyhton_in_action/webCam/ts_file0.txt','w+r')
+ts_file1 = open('/home/wsn/Documents/python/pyhton_in_action/webCam/ts_file1.txt','w+r')
+
 # cv2.namedWindow('show',cv2.WND_PROP_FULLSCREEN)
 # read camera data
 ret,frame0 = cap0.read()
@@ -97,13 +100,17 @@ while True:
     ret,frame0 = cap0.read()
     ret,frame1 = cap1.read()
 
+    # dt = datetime.datetime.now()
+    # cv2.putText(frame0,str(dt),(10,frame0.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+    # ,1.35,(0,0,255),1)
+    # cv2.putText(frame1,str(dt),(10,frame1.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+    # ,1.35,(0,0,255),1)
     dt = datetime.datetime.now()
-    cv2.putText(frame0,str(dt),(10,frame0.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
-    ,1.35,(0,0,255),1)
-    cv2.putText(frame1,str(dt),(10,frame1.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
-    ,1.35,(0,0,255),1)
-
+    ts_file0.write(str(dt)+'\n')
     out0.write(frame0)
+
+    dt = datetime.datetime.now()
+    ts_file1.write(str(dt)+'\n')
     out1.write(frame1)
 
 cap.release()
