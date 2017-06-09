@@ -61,6 +61,7 @@ train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 # train_step operation, using feed_dict to replace the placeholder tensors x and
 # y_ with the trianing examples. Note that you can replace any tensor in your
 # computation graph using feed_dict -- it's not restricted to just placeholders.
+
 for _ in range(1000):
     batch = mnist.train.next_batch(100)
     train_step.run(feed_dict={x:batch[0],y_:batch[1]})
@@ -108,3 +109,56 @@ def max_pool_2x2(x):
 # number of output channels. We will also have a bias vector with a component for
 # each output channel
 W_conv1 = weight_variable([5,5,1,32])
+b_conv1 = bias_variable([32])
+# To apply the layer, we first reshape x to a 4d tensor, with the second and third
+# dimensions corresponding to image width and height, and the final dimension
+# corresponding to the number of color channels.
+x_image = tf.reshape(x,[-1,28,28,1])
+# We then convolve x_image with the weight tensor, add the bias, apply the ReLU
+# function, and finally max pool. The max_pool_2x2 method will reduce the image
+# size to 14x14
+h_conv1 = tf.nn.relu(conv2d(x_image,W_conv1) + b_conv1)
+h_pool1 = max_pool_2x2(h_conv1)
+
+# Second Convolutional layer
+# In order to build a deep Network, we stack several layers of this type. The
+# second layer will have 64 features for each 5x5 patch.
+W_conv2 = weight_variable([5,5,32,64])
+b_conv2 = bias_variable([64])
+
+h_conv2 = tf.nn.relu(conv2d(h_pool1,W_conv2) + b_conv2)
+h_pool2 = max_pool_2x2(h_conv2)
+
+# Densely Connected layer
+# Now that the image size has been reduced to 7x7, we add a fully-connected layer
+# with 1024 neurons to allow processing on the entire image. We reshape the tensor
+# from the pooling layer into a batch of vectors, multiply by a weight matrix,
+# and a bias, and apply a ReLU.
+W_fc1 = weight_variable([7*7*64,1024])
+b_fc1 = bias_variable([1024])
+
+h_pool2_flat = tf.reshape(h_pool2,[-1,7*7*64])
+h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat,W_fc1) + b_fc1)
+
+# Dropout
+# To reduce overfitting, we will apply Dropout before the readout layer. We create
+# placeholder for the probalility that a neurons output is kept during Dropout.
+# This allows us to turn Dropout on during training, and turn it off during testing
+# TensorFlow's tf.nn.dropout op automatically handless scaling neuron outputs in
+# addition to masking them, so dropout just works without any additional scaling.
+keep_prob = tf.placeholder(tf.float32)
+h_fc1_drop = tf.nn.dropout(h_fc1,keep_prob)
+
+# Readout Layer
+W_fc2 = weight_variable([1024,10])
+b_fc2 = bias_variable([10])
+
+y_conv = tf.matmul(h_fc1_drop,W_fc2)+b_fc2
+
+# Train and Evaluate the Model
+# How well does this model do? To train and evaluate it we will use that is nearly
+# idendical to that for the simple one layer softmax Network above.
+# The differences are that:
+# - We will replace the sleepest gradient descent optimizer with the more
+#   sophisticated ADAM optimizer.
+#
