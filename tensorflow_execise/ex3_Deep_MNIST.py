@@ -14,7 +14,7 @@ mnist = input_data.read_data_sets("tensorflow_execise/MNIST_data/",one_hot=True)
 # The connection to this backend is called a session. The common usage for
 # TensorFlow programs is to first create a graph and then launch it in a session.
 # Here we instead use the convenient InteractiveSession class, which makes
-# TensorFlow moer flexible about how you structure your code. It allows you to
+# TensorFlow more flexible about how you structure your code. It allows you to
 # interleave(交错) operations which build a computation graph with ones that run
 # the graph. InteractiveSession, then you should build the entire conputation
 # graph before starting a seesion and launching the graph.

@@ -39,9 +39,9 @@ print sess.run(add_ab,feed_dict={a:[2,4],b:[5,9]})
 add_triple = add_ab * 3
 print sess.run(add_triple,feed_dict={a:3,b:4.5})
 
-# In machin learning we will typically want a model that can take arbtrary inputs
+# In machine learning we will typically want a model that can take arbtrary inputs
 # such as the one above. To make the model trainable, we need to be able to modify
-# the graph to get new oututs with the same input. Variables allow us to add trainable
+# the graph to get new outputs with the same input. Variables allow us to add trainable
 # parameters to a grap. They are constructed with a type and initial value:
 W = tf.Variable([.3],tf.float32)
 b = tf.Variable([-.3],tf.float32)
@@ -55,6 +55,7 @@ linear_model = W*x + b
 init = tf.global_variables_initializer()
 sess.run(init)
 print W,b
+print sess.run([W,b])
 # It is important to realize init is a handle to the TensorFlow sub-graph that
 # initializes all the global Variables. Until we call sess.run, the variables are
 # uninitialized.
