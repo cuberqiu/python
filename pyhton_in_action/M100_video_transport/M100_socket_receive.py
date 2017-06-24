@@ -1,3 +1,4 @@
+# coding:utf-8
 import socket
 import numpy as np
 import cv2
@@ -22,12 +23,6 @@ s2 = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s2.bind(addr2_from)
 
 
-# camera
-cap0 = cv2.VideoCapture(0)
-ret,frame0 = cap0.read()
-cap1 = cv2.VideoCapture(1)
-ret,frame1 = cap0.read()
-
 # save
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out0 = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/store/output_local0.avi'\
@@ -35,7 +30,18 @@ out0 = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/store/output
 out1 = cv2.VideoWriter('/home/wsn/Documents/python/pyhton_in_action/store/output_local1.avi'\
 ,fourcc,30,(1280,720))
 
+# 自动尺寸显示
 cv2.namedWindow('show',cv2.WND_PROP_AUTOSIZE)
+
+# 全屏显示
+# cv2.namedWindow('Video',cv2.WND_PROP_FULLSCREEN)
+# cv2.setWindowProperty('Video',cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
+
+# camera
+cap0 = cv2.VideoCapture(0)
+ret,frame0 = cap0.read()
+cap1 = cv2.VideoCapture(1)
+ret,frame1 = cap0.read()
 
 max_size = 60000
 
@@ -46,6 +52,7 @@ recieve_video = [False]
 img_to_read = b''
 img_to_show = b''
 
+# data thread
 def data_thread(threadname,num):
         while True:
             data,addr_1 = s1.recvfrom(max_size)
@@ -80,9 +87,17 @@ thread.start_new_thread(data_thread,("data_thread",1))
 while True:
 
     if show_local[0] and show_local_camera0[0] and not recieve_video[0]:# display local camera video
+        # 打时间戳
+        # dt = datetime.datetime.now()
+        # cv2.putText(frame0,str(dt),(10,frame0.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+        # ,1.35,(0,0,255),1)
         cv2.imshow('show',frame0)
         cv2.waitKey(1)
     elif show_local[0] and not show_local_camera0[0] and not recieve_video[0]:
+        # 打时间戳
+        # dt = datetime.datetime.now()
+        # cv2.putText(frame1,str(dt),(10,frame1.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+        # ,1.35,(0,0,255),1)
         cv2.imshow('show',frame1)
         cv2.waitKey(1)
     elif recieve_video[0] and not show_local[0] and not show_local_camera0[0]:
@@ -126,9 +141,17 @@ while True:
                 img_decoded = cv2.imdecode(data_show,1)
                 # print img_decoded
 
+                # 打时间戳
+                # dt = datetime.datetime.now()
+                # cv2.putText(img_decoded,str(dt),(10,img_decoded.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+                # ,1.35,(0,0,255),1)
                 cv2.imshow('show',img_decoded)
                 cv2.waitKey(1)
             else:
+                # 打时间戳
+                # dt = datetime.datetime.now()
+                # cv2.putText(frame0,str(dt),(10,frame0.shape[0]-10),cv2.FONT_HERSHEY_SIMPLEX\
+                # ,1.35,(0,0,255),1)
                 cv2.imshow('show',frame0)
                 cv2.waitKey(1)
     ret,frame0 = cap0.read()
