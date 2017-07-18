@@ -1,4 +1,4 @@
-
+from enum import Enum
 # import ex3_list
 from datetime import datetime
 
@@ -39,7 +39,6 @@ str1 = "201703"
 
 str1 = str1[:4]+'-'+str1[4:]
 print(str1)
-
 
 
 
