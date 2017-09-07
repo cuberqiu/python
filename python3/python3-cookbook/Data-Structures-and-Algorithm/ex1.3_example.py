@@ -67,4 +67,4 @@ print(f.__next__())
 print(f.__next__())
 print(f.__next__())
 
-
+# 注意，在一个generator function中，如果没有return，则默认执行函数完毕，如果在执行过程中return，则直接抛出StopIteration终止迭代
