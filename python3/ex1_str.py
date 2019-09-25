@@ -5,7 +5,7 @@
 str1 = "This is python3"
 
 print(str1[1])
-print(str1[1:5])
+print(str1[1:5])  # 左闭右开
 
 # 字符串更新
 
@@ -28,7 +28,8 @@ name = "cuberqiu"
 age = 23
 
 print("{} is a boy.".format(name))
-print("{} is {} years old.".format(name,age))
+print("{} is {} years old.".format(name, age))
+print("{myName} is my name".format(myName=name))
 
 # locals()与globals()的区别：基于字典的局部和全局的访问方式
 def test(arg):
@@ -87,14 +88,14 @@ def outer():
 str1 = "2012%43423"
 print(str1)
 
-import time
-x = [1,2,3,3,3,5,2,3,5,2,3]
-
-while True:
-    for i in range(len(x)):
-        if x[i] == 2:
-            break
-    time.sleep(1)
-    print("cycle")
+# import time
+# x = [1,2,3,3,3,5,2,3,5,2,3]
+#
+# while True:
+#     for i in range(len(x)):
+#         if x[i] == 2:
+#             break
+#     time.sleep(1)
+#     print("cycle")
 
 

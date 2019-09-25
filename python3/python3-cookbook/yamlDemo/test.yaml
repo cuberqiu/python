@@ -1,0 +1,9 @@
+# Define the local storage information
+DISK:
+  path: /data/ideX
+  # each user has 1024 Mb
+  quota: 1048576
+
+# Define the log path for jobs
+LocalStorage:
+  job_logs: /data/ideX/job_logs/

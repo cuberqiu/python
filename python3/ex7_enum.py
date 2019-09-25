@@ -1,15 +1,15 @@
-# coding:utf-8
-
-from enum import Enum
-
-# python中使用类来创建枚举
 
 
-class System(Enum):
-    AF = 'AF'
-    LZ = 'LZ'
+sum = 1469 + 374 + 360 + 486 + 786 + 520 + 464 + 920 + 294 + 110 + 762 + 250
+# print(1469 + 374 + 360 + 486 + 786 + 520 + 464 + 920 + 294 + 110 + 762 + 250)
 
-if System.AF.value == 'AF':
-    print(System.AF.value)
-else:
-    print("error")
+print(sum)
+
+
+lists = [1,2,3,4,5]
+
+for i in lists:
+    print(i)
+
+
+

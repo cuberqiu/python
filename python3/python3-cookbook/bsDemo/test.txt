@@ -1,0 +1,6 @@
+from to direction label props
+103	203	out	friends	 {'_count': -1, '_timestamp': 111}
+102	202	out	friends	 {'_count': -1, '_timestamp': 111}
+202	202	out	friends	 {'_count': -1, '_timestamp': 111}
+302	202	out	friends	 {'_count': -1, '_timestamp': 111}
+402	202	out	friends	 {'_count': -1, '_timestamp': 111}
