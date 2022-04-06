@@ -1,10 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-dev_proxies = {'https': 'https://dev-proxy.oa.com:8080',
-               'http': 'http://dev-proxy.oa.com:8080'}
-office_proxies = {'http': 'http://proxy.tencent.com:8080',
-                  'https': 'https://web-proxy.oa.com:8080'}
 
 print("test requests")
 # r = requests.get('https://api.github.com/events')
@@ -12,8 +8,6 @@ print("test requests")
 # r = requests.get('https://api.github.com/events', proxies=dev_proxies)
 
 r = requests.get('https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF', proxies=dev_proxies)
-# r1 = requests.get('http://wiki.tdw.oa.com/wiki/index.php/TDW_%E5%87%BD%E6%95%B0%E5%9C%A8%E7%BA%BF%E6%89%8B%E5%86%8C',
-                   # auth=('cuberqiu', '201807079875'))
 #
 # r = requests.get('http://douban.com')
 
