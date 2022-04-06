@@ -2,8 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
-dev_proxies = {'https': 'https://dev-proxy.oa.com:8080',
-               'http': 'http://dev-proxy.oa.com:8080'}
 
 r = requests.get('https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF', proxies=dev_proxies)
 # print(type(r.text))
